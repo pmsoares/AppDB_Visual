@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Empresa" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=escritorio;Initial Catalog=Empresa;Integrated Security=True" SettingsObjectName="AppDB_Visual.Properties.Settings" SettingsPropertyName="EmpresaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Departamentos" Member="Departamentos">
+    <Type Name="Departamento">
+      <Column Name="Sigla" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Departamento" Member="Departamento1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Departamento_Funcionario" Member="Funcionarios" ThisKey="Sigla" OtherKey="Departamento" Type="Funcionario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funcionarios" Member="Funcionarios">
+    <Type Name="Funcionario">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Departamento" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Departamento_Funcionario" Member="Departamento1" ThisKey="Departamento" OtherKey="Sigla" Type="Departamento" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
